@@ -4,7 +4,7 @@ html-url-loader
 
 研究其源码得知， `html-webpack-plugin` 使用 `lib/loader.js` 来处理 HTML 页面内容，而其并未对 `img` 标签 `src` 作出处理而导致该问题。
 
-另外 `html-loader` 虽然解决了图片解析问题，但又使用原本支持的 `模板变量解析` 功能丧失。
+另外 `html-loader` 虽然解决了图片解析问题，但又使原本支持的 `模板变量解析` 功能丧失。
 
 而使用 `html-url-loader` 可以顺利解决以上问题，图片将会自动被打包，而且路径也自动与 `url-loader` 发生关联得到正确设置，而且变量也会正确被解析。
 
