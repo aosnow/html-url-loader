@@ -1,6 +1,6 @@
 {
-  "name": "html-img-loader",
-  "version": "1.0.0501",
+  "name": "html-url-loader",
+  "version": "1.0.4",
   "description": "解析 html 静态模板中的 img 等资源标签，转交给 url-loader 加载和处理图片。",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,6 @@
     "url": "https://github.com/aosnow/html-url-loader/issues"
   },
   "dependencies": {
-    "fs": "^0.0.1-security",
     "loader-utils": "^1.1.0",
     "path": "^0.12.7"
   }

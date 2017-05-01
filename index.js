@@ -33,7 +33,13 @@ var loaderUtils = require( "loader-utils" );
 
 module.exports = function( fileContent )
 {
-	var options = loaderUtils.parseQuery( this.query );
+	var options = this.query;
+	if( typeof options === "string" )
+	{
+		options = (options.substr( 0, 1 ) !== "?" ? "?" : "") + options;
+		options = loaderUtils.parseQuery( options );
+	}
+
 	if( options.deep !== false ) fileContent = include_file( fileContent, this.query );
 
 	var template = _.template( fileContent, _.defaults( options, { variable: 'data' } ) );
@@ -88,6 +94,6 @@ function include_file( fileContent, queryStr )
 	return fileContent.replace( /#include\(\\?['"][^'"]+\\?['"]\);?/g, function( str )
 	{
 		var childFileSrc = str.replace( /[\\'">();]/g, '' ).replace( '#include', '' );
-		return "\"+require(" + JSON.stringify( "html-img-loader" + queryStr + "!" + childFileSrc ) + ")+\"";
+		return "\"+require(" + JSON.stringify( "html-url-loader" + queryStr + "!" + childFileSrc ) + ")+\"";
 	} );
 }
