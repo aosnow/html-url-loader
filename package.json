@@ -1,0 +1,32 @@
+{
+  "name": "html-img-loader",
+  "version": "1.0.0501",
+  "description": "解析 html 静态模板中的 img 等资源标签，转交给 url-loader 加载和处理图片。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "html-loader",
+    "url-loader",
+    "html-webpack-plugin",
+    "html",
+    "img",
+    "loader"
+  ],
+  "author": "aosnow <aosnow@yeah.net>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aosnow/html-url-loader"
+  },
+  "bugs": {
+    "url": "https://github.com/aosnow/html-url-loader/issues"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "loader-utils": "^1.1.0",
+    "path": "^0.12.7"
+  }
+}
