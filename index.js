@@ -83,10 +83,19 @@ function parse_html_tag( fileContent )
 		{
 			imgUrl = './' + imgUrl;
 		}
-		return str.replace( reg, attrName + "='+JSON.stringify(require(" + JSON.stringify( imgUrl ) + "))+'" );
+		return str.replace(reg, attrName + "='+JSON.stringify(" + getSafeRequireStr("require(" + JSON.stringify(imgUrl) + ")") + ")+" + "'");
 	} );
 
 	return fileContent;
+
+	
+	/* 获取安全的require字符串 */
+	function getSafeRequireStr(str) {
+		/* 在nodejs 12.18.2 中使用这个loader时，会输出 { default: 'xxxx/img.png'} 这样一段字符串 而不是 xxxx/img.png */
+		/* 所以在这里做一下兼容的处理 */
+		/* 如果require引入的模板时有default属性时就直接使用default属性，否则直接输出引入的这个对象的值 */
+		return str.concat(".default||").concat(str);
+	}
 }
 
 function include_file( fileContent, queryStr )
